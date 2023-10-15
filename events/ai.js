@@ -1,6 +1,5 @@
 const { Events } = require('discord.js');
 const fs = require('fs');
-const process = require('node:process');
 const generalChat = '1005137352383004777';
 let lastMessage = 0;
 
@@ -52,26 +51,12 @@ function markovMe(input) {
 	return result;
 }
 
-process.stdin.resume();
+save();
 
-function exitHandler() {
-	const stringJson = JSON.stringify(markovChain);
-	console.log(stringJson);
-	fs.writeFileSync('ai.json', stringJson);
-	process.exit();
+function save() {
+	setTimeout(() => {
+		const stringJson = JSON.stringify(markovChain);
+		fs.writeFileSync('ai.json', stringJson);
+		save();
+	}, 180000);
 }
-
-// register the exit handler
-process.on('exit', exitHandler);
-
-// handle Ctrl+C
-process.on('SIGINT', () => {
-	console.log('Received SIGINT');
-	exitHandler();
-});
-
-// handle uncaught exceptions
-process.on('uncaughtException', (err) => {
-	console.error('Uncaught Exception:', err);
-	exitHandler();
-});
