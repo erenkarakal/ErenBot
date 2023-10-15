@@ -1,0 +1,22 @@
+{
+  "name": "erenbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "eren",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "discord.js": "^14.11.0",
+	"geckodriver": "^4.0.5",
+    "jsonpath": "^1.1.1",
+    "node-fetch": "^3.3.1",
+    "selenium-webdriver": "^4.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.44.0"
+  }
+}
